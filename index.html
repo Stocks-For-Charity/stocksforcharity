@@ -1,598 +1,496 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SM Hacks III</title>
+  <style>
+    .gm-style .gm-style-mtc label,
+    .gm-style .gm-style-mtc div {
+      font-weight: 400
+    }
+  </style>
+  <style>
+    .gm-control-active>img {
+      box-sizing: content-box;
+      display: none;
+      left: 50%;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%)
+    }
 
-  <link rel="icon" href="assets\img\placeholder.png"/>
+    .gm-control-active>img:nth-child(1) {
+      display: block
+    }
 
-  <!--  Animate CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    .gm-control-active:hover>img:nth-child(1),
+    .gm-control-active:active>img:nth-child(1) {
+      display: none
+    }
 
-  <!-- Bootstrap CSS -->
-  <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  />
-  <!--  <link rel="stylesheet" href="css/bootstrap.min.css"/>-->
+    .gm-control-active:hover>img:nth-child(2),
+    .gm-control-active:active>img:nth-child(3) {
+      display: block
+    }
+  </style>
+  <link type="text/css" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700">
+  <style>
+    .gm-ui-hover-effect {
+      opacity: .6
+    }
 
-  <!-- Fonts -->
-  <link
-      href="https://fonts.googleapis.com/css?family=Muli|Open+Sans&display=swap"
-      rel="stylesheet"
-  />
+    .gm-ui-hover-effect:hover {
+      opacity: 1
+    }
+  </style>
+  <style>
+    .gm-style .gm-style-cc span,
+    .gm-style .gm-style-cc a,
+    .gm-style .gm-style-mtc div {
+      font-size: 10px;
+      box-sizing: border-box
+    }
+  </style>
+  <style>
+    @media print {
 
-  <!-- Style CSS -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+      .gm-style .gmnoprint,
+      .gmnoprint {
+        display: none
+      }
+    }
+
+    @media screen {
+
+      .gm-style .gmnoscreen,
+      .gmnoscreen {
+        display: none
+      }
+    }
+  </style>
+  <style>
+    .gm-style-pbc {
+      transition: opacity ease-in-out;
+      background-color: rgba(0, 0, 0, 0.45);
+      text-align: center
+    }
+
+    .gm-style-pbt {
+      font-size: 22px;
+      color: white;
+      font-family: Roboto, Arial, sans-serif;
+      position: relative;
+      margin: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%)
+    }
+  </style>
+  <style>
+    .gm-style img {
+      max-width: none;
+    }
+
+    .gm-style {
+      font: 400 11px Roboto, Arial, sans-serif;
+      text-decoration: none;
+    }
+  </style>
+
+  <!--
+
+  Credits:
+  CSS Framework - Skeleton
+  JS - jQuery
+
+  -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <meta charset="utf-8">
+  <title>Stocks for Charity</title>
+  <meta name="description" content="Investing in stocks to later donating profits to charities.">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="css/materialize.min.css">
+
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-115354119-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115354119-1');
+  </script>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '610343936068662');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=610343936068662&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+  <script type="text/javascript" charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/41/3a/common.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/41/3a/util.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/41/3a/map.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/41/3a/marker.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/41/3a/onion.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/41/3a/controls.js"></script>
 </head>
 
-<body>
-<main>
-  <a class="anchor" id="top"></a>
-  <nav class="navbar navbar-expand-lg bg-navbar flex-column flex-md-row" id="nav">
-    <div class="container">
-      <a class="navbar-brand" href="#top">SM</a>
-      <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"><i class="fas fa-bars fa-lg"></i></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
+<body data-gr-c-s-loaded="true">
+
+
+
+  <script>
+    $(document).ready(function () {
+      $(window).scroll(function () {
+        if ($(document).scrollTop() > 1000) {
+          $('#nav').removeClass('transparent');
+          $('#wrap').addClass('blue');
+          $('#wrap').addClass('darken-2');
+        }
+        else {
+          $('#nav').addClass('transparent');
+        }
+      });
+
+    });
+
+    $(document).ready(function () {
+      //Uncomment the following line to materialize select fields but break mailchimp's error checking
+      //$('select').material_select();
+
+      $('.scrollspy-offset').scrollSpy({
+        scrollOffset: 64
+      });
+      $('.scrollspy').scrollSpy({
+        scrollOffset: 0
+      });
+    });
+  </script>
+
+
+
+
+  <!-- Navbar
+  --------------------------------------------------->
+  <div class="navbar-fixed">
+    <nav id="nav" class="">
+      <div id="wrap" class="nav-wrapper blue darken-2">
+        <a href="#" class="brand-logo"><img class="logo-nav" src="images/logo-white.png" a="">
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down"><a href="#" class="brand-logo">
+          </a>
+          <li><a href="#" class="brand-logo"></a><a href="#about us" class="active">About Us</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#gallery">Gallery</a>
-          </li>
-          <!--          <li class="nav-item">-->
-          <!--            <a class="nav-link" href="#schedule">Schedule</a>-->
-          <!--          </li>-->
-          <li class="nav-item">
-            <a class="nav-link" href="#faq">FAQ</a>
-          </li>
-          <!--          <li class="nav-item">-->
-          <!--            <a class="nav-link" href="#organizers">Organizers</a>-->
-          <!--          </li>-->
-          <li class="nav-item">
-            <a class="nav-link" href="#sponsors-head">Sponsors</a>
-          </li>
+          <li><a href="#info" class="">Portfolio Performance</a></li>
+          <!--          <li><a href="#reg">Registration</a></li>-->
+          <li><a href="./blog.html">Daily Updates</a></li>
+          <!--<li><a href="#sponsors-list">Sponsors</a></li>-->
+          <!--<li><a href="/waiver.pdf" target="_blank">Waiver</a></li>-->
+          <!--<li><a href="/splash">Splash</a></li>-->
+          <!--          <li><a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:100px;right:0px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=blue" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-blue.svg" alt="Major League Hacking 2019 Hackathon Season" style="width:100%"></a></li>-->
+
         </ul>
-      </div>
-    </div>
-  </nav>
 
-  <div id="top-background-container"></div>
-
-  <section id="top-section">
-    <div class="container-fluid content-div" id="title-div">
-      <div id="logo-div" class="row">
-        <img id="logo-img" src="assets\img\placeholder.png" alt="Logo"/>
-      </div>
-<!--       <h1 class="top-info">Spring 2020</h1> -->
-      <!--            <h2>Location TBD</h2>-->
-    </div>
-  </section>
-
-  <section id="about-section">
-    <a class="anchor" id="about"></a>
-    <div class="content-div">
-      <div class="row">
-        <div class="col-12 col-md-6 align-middle" id="about-img-div">
-          <!--       Image       -->
-          <img class="block" id="about-img" src="assets\img\placeholder.png" alt="group-photo">
-        </div>
-        <div class="col-12 col-md-6 align-middle" id="about-text-div">
-          <div id="about-text">
-            <h1 class="heading">About</h1>
-            <p>
-              SM Hacks III is a high-school hackathon that is aimed at high
-              school students in the San Francisco Bay Area of all coding
-              experience levels and backgrounds.
-            </p>
-            <p>
-              Our mission is to provide a safe, welcoming, diverse, and
-              supportive space for students to explore the field of computer
-              science.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery-section">
-    <a class="anchor" id="gallery"></a>
-    <div class="content-div">
-      <h1 class="heading">Gallery</h1>
-      <div id="gallery-div">
-        <div class="row">
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="downtime1">
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="food1">
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="judging1">
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="working1">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="judging2">
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="working2">
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="food2">
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 gallery-img-div">
-            <div class="gallery-modal-toggle btn"
-                 data-toggle="modal" data-target="#modal-gallery-img">
-              <img class="img-fluid gallery-img"
-                   src="assets\img\placeholder.png"
-                   alt="downtime2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Image Modal -->
-    <div class="modal fade" id="modal-gallery-img" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-body text-center">
-            <div class="d-inline-flex">
-              <div id="modal-gallery-prev-div">
-                <i id="modal-gallery-prev" class="modal-arrow fas fa-chevron-left"></i>
-              </div>
-              <img id="modal-gallery-img-lg" class="img-fluid" src="" alt="gallery-img-lg">
-              <div id="modal-gallery-next-div">
-                <i id="modal-gallery-next" class="fas fa-chevron-right"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!--  <section id="schedule-section">-->
-  <!--    <a class="anchor" id="schedule"></a>-->
-  <!--    <div class="content-div">-->
-  <!--      <h1 class="heading">Schedule</h1>-->
-  <!--      <div class="container-fluid" id="schedule-wrapper">-->
-  <!--        <div class="row">-->
-  <!--          &lt;!&ndash;    SATURDAY    &ndash;&gt;-->
-  <!--          <div class="col-md-12 col-lg-6" id="scheduleSat">-->
-  <!--            <h2>Saturday - Feburary 15</h2>-->
-  <!--            <div class="schedule-event-div schedule-scrollbar">-->
-  <!--              <table class="table">-->
-  <!--                <thead>-->
-  <!--                <tr class="schedule-top-header">-->
-  <!--                  <th class="th-time">Time</th>-->
-  <!--                  <th class="th-event">Event</th>-->
-  <!--                </tr>-->
-  <!--                </thead>-->
-  <!--                <tbody></tbody>-->
-  <!--              </table>-->
-  <!--            </div>-->
-  <!--          </div>-->
-  <!--          &lt;!&ndash;    SUNDAY    &ndash;&gt;-->
-  <!--          <div class="col-md-12 col-lg-6" id="scheduleSun">-->
-  <!--            <h2>Sunday - Feburary 16</h2>-->
-  <!--            <div class="schedule-event-div schedule-scrollbar">-->
-  <!--              <table class="table">-->
-  <!--                <thead>-->
-  <!--                <tr class="schedule-top-header">-->
-  <!--                  <th class="th-time">Time</th>-->
-  <!--                  <th class="th-event">Event</th>-->
-  <!--                </tr>-->
-  <!--                </thead>-->
-  <!--                <tbody></tbody>-->
-  <!--              </table>-->
-  <!--            </div>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--        <div class="schedule-footer">-->
-  <!--          <p><i>Click on an event to view more details.</i></p>-->
-  <!--          <p>Events subject to change.</p>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </section>-->
-
-  <!-- TODO: Add email subscription -->
-
-  <section id="faq-section">
-    <a class="anchor" id="faq"></a>
-    <div class="content-div">
-      <h1 class="heading">FAQ</h1>
-      <!--        Copied from old website         -->
-      <div class="container-fluid" id="faq-content">
-        <div class="block faq-top-container">
-          <h3>What is a hackathon?</h3>
-          <p>
-            A hackathon is a 24-hour programming marathon where your ideas
-            come to life. Over the course of the weekend, students from
-            all backgrounds and all skill levels collaborate in teams of
-            up to four to build something awesome. All participants must
-            abide by the
-          </p>
-        </div>
-
-        <div class="d-flex flex-column flex-md-row">
-          <!--            Left FAQs     -->
-          <div class="flex-column faq-flexbox">
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-2">
-                <h3>Do I have to be in high school?</h3>
-              </div>
-              <div id="faq-2" class="">
-                <p>
-                  Yes, only current high school students will be able to
-                  attend. College students are welcome to help out as
-                  mentors!
-                </p>
-              </div>
-            </div>
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-3">
-                <h3>What if I don't have a team or an idea?</h3>
-              </div>
-              <div id="faq-3" class="">
-                <p>
-                  No worries! It's common for people to come into the
-                  hackathon without an already-formed group, so we'll make
-                  sure you're matched with the right people! We will have a
-                  team formation and brainstorming session on the first day, so
-                  everyone will be able to find an amazing team and come up with awesome
-                  ideas.
-                </p>
-              </div>
-            </div>
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-4">
-                <h3>How big can teams be?</h3>
-              </div>
-              <div id="faq-4" class="">
-                <p>
-                  Teams can be up to four people. While you may work as an
-                  individual, we highly encourage collaborating with others.
-                </p>
-              </div>
-            </div>
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-8">
-                <h3>What if I have another question?</h3>
-              </div>
-              <div id="faq-8" class="">
-                <p>
-                  Email us at
-                  <a class="link" href="mailto:team@smhacks.com"
-                  >team@smhacks.com</a
-                  >
-                  if you have any additional questions. We are always happy to
-                  help!
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-          <!--            Right FAQs    -->
-          <div class="flex-column faq-flexbox">
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-1">
-                <h3>What if I don't know how to code?</h3>
-              </div>
-              <div id="faq-1" class="">
-                <p>
-                  No worries! SM Hacks is the perfect time to learn how to
-                  code and all students, regardless of skill level and
-                  experience, are welcome. There will be plenty of mentors on
-                  hand glad to answer any and all questions and workshops
-                  specifically designed for those with no prior experience.
-                  Stay tuned for more information about workshops!
-                </p>
-              </div>
-            </div>
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-6">
-                <h3>How much does it cost to attend?</h3>
-              </div>
-              <div id="faq-6" class="">
-                <p>
-                  Nothing! Thanks to our wonderful sponsors, the event is free for all attendees.
-                </p>
-              </div>
-            </div>
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-5">
-                <h3>What should I bring?</h3>
-              </div>
-              <div id="faq-5" class="">
-                <p>
-                  Attendees should bring a valid student ID or some other form
-                  of identification, as well as a signed and completed waiver.
-                  Bring laptops and chargers, along with any other technology
-                  that you may want to use! We will have designated sleeping
-                  spots so feel free to bring a sleeping bag and pillow. Also
-                  it is highly suggested that you bring toiletries so you can
-                  feel refreshed and beautiful!
-                </p>
-              </div>
-            </div>
-
-            <div class="block faq-container">
-              <div data-toggle="" data-target="#faq-7">
-                <h3>How can I apply?</h3>
-              </div>
-              <div id="faq-7" class="">
-                <!-- TODO: create notification system; mailchimp?-->
-                <p>
-                  Applications for hackers have not yet opened, but follow our social media @sanmateohacks to be alerted
-                  as soon as they do!
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
 
       </div>
-    </div>
-  </section>
-
-  <section id="sponsors-head">
-    <div class="content-div">
-      <h1 class="heading">Sponsors</h1>
-      <h4>Interested in sponsoring?</h4>
-      <h4>
-        Email us at
-        <a class="link" href="mailto:sponsors@smhacks.com"
-        >sponsors@smhacks.com</a
-        >!
-      </h4>
-    </div>
-  </section>
-
-  <section id="sponsors-section">
-    <a class="anchor" id="sponsors"></a>
-    <div class="content-div">
-      <a href="https://balsamiq.com/" target="_blank">
-        <img class="img-fluid sponsor-logo-img"
-             src="assets\img\placeholder.png"
-             alt="Balsamiq"/>
-      </a>
-      <a href="https://hackclub.com/bank/" target="_blank">
-        <img class="img-fluid sponsor-logo-img"
-             src="assets\img\placeholder.png"
-             alt="HCB"/>
-      </a>
-      <a href="https://www.expressvpn.com/what-is-vpn" target="_blank">
-        <img class="img-fluid sponsor-logo-img"
-             src="assets\img\placeholder.png"
-             alt="ExpressVPN"/>
-      </a>
-      <a href="https://www.makeschool.com/" target="_blank">
-        <img class="img-fluid sponsor-logo-img"
-             src="assets\img\placeholder.png"
-             alt="MakeSchool"/>
-      </a>
-    </div>
-  </section>
-
-  <!--    <section id="organizers-section">-->
-  <!--        <a class="anchor" id="organizers"></a>-->
-  <!--        <div class="content-div">-->
-  <!--            <h1 class="heading">Organizers</h1>-->
-  <!--            <div id="organizers-div" class="text-center">-->
-  <!--                &lt;!&ndash;-->
-  <!--                  TODO: use production images-->
-  <!--                 &ndash;&gt;-->
-  <!--                <div class="row">-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/jason_min.jpg" alt="Jason">-->
-  <!--                            <h4>Jason L.</h4>-->
-  <!--                            <figcaption>Lead and Sponsorship Director</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/alec_min.jpg" alt="Alec">-->
-  <!--                            <h4>Alec L.</h4>-->
-  <!--                            <figcaption>Operations Director</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/kristine_min.jpg" alt="Alec">-->
-  <!--                            <h4>Kristine K.</h4>-->
-  <!--                            <figcaption>Outreach Director</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/alex_min.jpg" alt="Alec">-->
-  <!--                            <h4>Alex N.</h4>-->
-  <!--                            <figcaption>Tech Director</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                </div>-->
-
-  <!--                <div class="row">-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/bhavik_min.jpg" alt="Bhavik">-->
-  <!--                            <h4>Bhavik J.</h4>-->
-  <!--                            <figcaption>Operations</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/brandon_min.jpg" alt="Brandon">-->
-  <!--                            <h4>Brandon L.</h4>-->
-  <!--                            <figcaption>Operations</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/nerissa_min.jpg" alt="Nerissa">-->
-  <!--                            <h4>Nerissa C.</h4>-->
-  <!--                            <figcaption>Outreach</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/jessie_min.jpg" alt="Jessie">-->
-  <!--                            <h4>Jessie J.</h4>-->
-  <!--                            <figcaption>Tech</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                </div>-->
-  <!--                <div class="row">-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div mx-auto">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/akhil_min.jpg" alt="Akhil">-->
-  <!--                            <h4>Akhil M.</h4>-->
-  <!--                            <figcaption>Operations</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div mx-auto">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/jeffrey_min.jpg" alt="Jeffrey">-->
-  <!--                            <h4>Jeffrey D.</h4>-->
-  <!--                            <figcaption>Outreach</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                    <div class="col-6 col-md-3 organizer-img-div mx-auto">-->
-  <!--                        <figure>-->
-  <!--                            <img class="img-fluid organizer-img"-->
-  <!--                                 src="assets/img/headshots/emmanuel_min.jpg" alt="Emmanuel">-->
-  <!--                            <h4>Emmanuel C.</h4>-->
-  <!--                            <figcaption>Tech</figcaption>-->
-  <!--                        </figure>-->
-  <!--                    </div>-->
-  <!--                </div>-->
-  <!--            </div>-->
-  <!--        </div>-->
-  <!--    </section>-->
-</main>
-
-<!--<a href="#top" id="top-button" class="nav-link"><i class="fa fa-chevron-up"></i></a>-->
-
-<footer>
-  <div class="container">
-    <p>Copyright &copy; SM Hacks 2019-2020. All rights reserved.</p>
+    </nav>
   </div>
-</footer>
 
-<!-- Jquery JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-    src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-    crossorigin="anonymous"
-></script>
+  <!-- Banner
+  --------------------------------------------------->
+  <div class="banner">
+    <div id="index-banner">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <img style="margin-bottom: -30px;" height="175px" src="images/logo-white.png">
+          <h1 class="header center white-text ">Stocks for <span style="font-weight: 600">Charity</span></h1>
+          <div class="row center">
+            <h5 class="header col s12 light white-text">Subtitle</h5>
+            <h6 class="header col s12 light white-text">Update: something!</h6>
+          </div>
+          <div class="row center">
+            <!--  <a href="#schedule" id="schedule-link" class="btn-large waves-effect waves-light blue lighten-1">Schedule</a>
+              <a href="https://docs.google.com/presentation/d/1_-6FDVLvkpx5QBc1EtnEWMk14oW9QseR5ixUL_jMSy0/edit?usp=sharing" target="_blank" class="btn-large waves-effect waves-light blue lighten-1">Opening Presentation</a> -->
+            <!-- <a href="#schedule" id="schedule-link" class="btn-large waves-effect waves-light blue lighten-1">Schedule</a> -->
+            <!--              <a href="#sponsors-list" id="sponsor-link" class="btn-large waves-effect waves-light blue lighten-1">Check out our Sponsors!</a>-->
+            <!--<a href="/waiver.pdf" target="_blank" id="waiver-link" class="btn-large waves-effect waves-light blue lighten-1">Waiver</a>-->
+            <!-- <a href="#reg" id="reg-button" class="btn-large waves-effect waves-light blue lighten-1">Apply now!</a> -->
+            <!-- <a href="#sponsor-reg" id="sponsor-button" class="btn-large waves-effect waves-light blue lighten-1">Sponsor us!</a> -->
+          </div>
+          <br><br>
 
-<!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/0d51adadb3.js"></script>
+        </div>
+      </div>
+      <div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1"
+          style="display: block; transform: translate3d(-50%, 0px, 0px);"></div>
+    </div>
+  </div>
 
-<!-- Popper JS -->
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-    crossorigin="anonymous"
-></script>
+  <!-- About Us
+  --------------------------------------------------->
+  <div class="faq scrollspy" id="about us">
+    <section>
+      <div class="container">
 
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
+        <div class="faq-header"> About <span style="font-weight: 600;">Us</span> </div>
+        <ul>
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <li>
+                <h3 style="text-align: center;">Mission Statement</h3>
+                <p>Stocks for Charity is a byproduct of our pursuit of using investments for the community’s benefit.
+                  Our method of contributions involves using our portfolio to build up funds, which will then be used to
+                  facilitate donations to our chosen recipient, Hillsides Education Center in Pasadena.</p>
+              </li>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m5 l4">
+              <li>
+                <h3>AJ Wong</h3>
+                <p>Hi, I’m AJ Wong, a rising senior at San Marino High School. I started tutoring at Hillsides in early
+                  2019, and my experiences there have helped me impact others, but also have impacted me. As I am
+                  looking to pursue finance and business in college, my inspirations for starting the project were
+                  founded on connecting my interests in economics and investments with education. Thereby, I thought it
+                  best to use the tools I had in both fields together to make an impact. Thus, it only seemed best to
+                  transfer the focus of my investments from personal benefit to that of the community. </p>
+              </li>
+              <li>
+              </li>
+            </div>
+            <div class="col s12 m5 l4">
+              <li>
+                <h3>Jeff Wang</h3>
+                <p>Hi, I’m Jeff Wang, also a rising senior at San Marino High School. I want to pursue a computer
+                  science major in college with a focus on bioinformatics with artificial intelligence. But I also have
+                  a deep-rooted interest in investing as I participate in managing stocks with my father. In the future,
+                  I’d like to experiment with the application of machine learning with finance. Indeed, I thought it a
+                  great idea to be able to connect my interests with helping others, and as such, manage the website for
+                  our organization.</p>
+              </li>
+            </div>
+            <div class="col s12 m5 l4">
+              <li>
+                <h3>Who are we donating to?</h3>
+                <p>Funds will be directed to Hillsides. Situated between the contrastingly diverse Los Angeles areas of
+                  South Pasadena, Highland Park, and Eagle Rock, Hillsides Education Center serves the surrounding
+                  community by providing refuge and education to those who don’t have access to it. They house young
+                  individuals who aren’t fortunate enough to do so at home, work on developing their kids in their
+                  education, but most of all, are there to support and create a lasting change for America’s future.
+                  Their network of staff, contributors, and volunteers work tirelessly around the clock to give back and
+                  propel the youth to unparalleled heights. They focus solely on putting children first, and “envision a
+                  world in which children and young adults, families, and communities are able to heal, grow, and
+                  thrive”. From our connection in sharing the same ideologies and personally having experience in what
+                  Hillsides strives to do, we thought it only right to help as much as we could in upholding those
+                  values.</p>
+              </li>
+            </div>
+          </div>
+      </div>
 
-<!-- Modal Script -->
-<script src="js/modal-script.js"></script>
+  </div>
 
-<!-- Moment.js Library -->
-<script src="https://momentjs.com/downloads/moment.min.js"></script>
-<script src="js/moment.min.js"></script>
+  </ul>
+  </div>
 
-<!-- Particle JS -->
-<script src="js/particles.min.js"></script>
-<script src="js/particle-script.js"></script>
+  </section>
+  </div>
 
-<!-- Smooth Scrolling Script -->
-<script src="js/scroll-script.js"></script>
+  <!-- Info
+  --------------------------------------------------->
+  <div class="info scrollspy-offset" id="info">
+    <div class="container">
+      <div class="section">
+        <!--   Icon Section   -->
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center white-text">title1</h2>
 
-<!-- Schedule Script -->
-<script src="js/schedule-data.js"></script>
-<script src="js/schedule.js"></script>
+              <p class="light">details</p>
+            </div>
+          </div>
 
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center white-text">title2</h2>
+
+              <p class="light">details</p>
+
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center white-text">title3</h2>
+
+
+              <p class="light">details</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="registration-container scrollspy" id="reg">
+  </div>
+
+  <!-- Six -->
+
+  <section class="spons-reg scrollspy-offset" id="sponsor-reg">
+    <div class="container">
+      <h2>Interested in donating to us?</h2>
+      <p>something something all funds will be directed to the investment of stocks!</p>
+      <br>
+      <!-- <center> -->
+      <a href="https://hillsides.wedid.it/" target="_blank"
+        class="btn-large blue lighten-1 waves-effect waves-light">Let us know!</a>
+      <a href="https://hillsides.wedid.it/" target="_blank"
+        class="btn-large blue lighten-1 waves-effect waves-light">Read our comprehensive plan!</a>
+      <!-- </center> -->
+      <!--<div id="mc_embed_signup">-->
+      <!--<form action="//hackmhs.us12.list-manage.com/subscribe/post?u=ed4a703e69c0dfd4fdd88730f&amp;id=d53eaabff9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>-->
+      <!--<div id="mc_embed_signup_scroll">-->
+      <!--<h5>Interested in Sponsoring Us?</h5>-->
+      <!--<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>-->
+      <!--<div class="mc-field-group">-->
+      <!--<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>-->
+      <!--</label>-->
+      <!--<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">-->
+      <!--</div>-->
+      <!--<div id="mce-responses" class="clear">-->
+      <!--<div class="response" id="mce-error-response" style="display:none"></div>-->
+      <!--<div class="response" id="mce-success-response" style="display:none"></div>-->
+      <!--</div>    &lt;!&ndash; real people should not fill this in and expect good things - do not remove this or risk form bot signups&ndash;&gt;-->
+      <!--<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ed4a703e69c0dfd4fdd88730f_d53eaabff9" tabindex="-1" value=""></div>-->
+      <!--<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn-large blue lighten-1"></div>-->
+      <!--</div>-->
+      <!--</form>-->
+      <!--</div>-->
+      <!--<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>-->
+      <!--End mc_embed_signup-->
+
+    </div>
+  </section>
+
+
+
+  <script>
+    function initMap() {
+      var uluru = { lat: 40.720490, lng: -74.315696 };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+  </script>
+  <script async="" defer=""
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoDePemLw0HVst66bBdUK5rwcFZeW5eRU&amp;callback=initMap">
+    </script>
+
+
+  <div class="sponsors scrollspy-offset" id="sponsors-list">
+    <div class="container">
+      <!-- Platinum -->
+      <a href="https://owlrock.com/" target="_blank"><img class="s-image" src="./images/owlrock.png"></a>
+
+      <br>
+      <!-- Gold -->
+      <a href="https://www.jpmorganchase.com/" target="_blank"><img class="s-image" src="/images/jpmc_logo.png"></a>
+      <a href="https://www.geodesic.pro" target="_blank"><img class="s-image" src="/images/Geodesic.png"></a>
+
+
+      <br>
+      <!-- Silver -->
+      <a href="https://www.linode.com/" target="_blank"><img class="s-image" src="/images/linode.png"></a>
+      <a href="https://www.github.com/" target="_blank"><img class="s-image" src="/images/github.png"></a>
+
+      <br>
+      <!-- Bronze -->
+      <a href="https://edfmsh.membershiptoolkit.com/" target="_blank"><img class="s-image"
+          src="/images/D_KAPUR_EFLogo_HORIZ_FINAL.jpg"></a>
+      <a href="https://www.swkrealestate.com/" target="_blank"><img class="s-image" src="/images/swk.jpg"></a>
+
+      <br>
+      <!-- Friend/Non-monetary -->
+      <a href="https://www.wolframalpha.com/"><img class="s-image" src="/images/wolfram.png"></a>
+      <a href="http://do.co/studenthackathon"><img class="s-image" src="/images/digitalocean.png"></a>
+      <a href="https://www.stickermule.com/"> <img class="s-image" src="/images/stickermule_logo.svg"></a>
+
+    </div>
+  </div>
+
+
+  <!-- Footer
+  --------------------------------------------------->
+  <footer>
+    <p>Made by the Stocks for Charity Team<br></p>
+    <ul class="social">
+      <li><a href="mailto:info@hackmhs.com"><i class="fa fa-envelope"></i></a></li>
+      <li><a href="//facebook.com/hackmhs"><i class="fa fa-facebook-official"></i></a></li>
+      <li><a href="//twitter.com/hackmhs"><i class="fa fa-twitter"></i></a></li>
+    </ul>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="js/materialize.min.js"></script>
+
+  <script src="js/init.js"></script>
+
+  <div class="hiddendiv common"></div>
 </body>
+
 </html>

@@ -1,0 +1,203 @@
+/* Establishing Basics */
+
+h3 {
+    font-size : 1.2em;
+    font-weight: 600;
+  
+  }
+  h2 {
+    font-size: 2.6em;
+  }
+  
+  h4 {
+    font-size: 3em;
+    text-decoration: none;
+  }
+  
+  h5 {
+    font-size: 1.8em;
+  }
+  
+  .transparent {
+    box-shadow: none;
+  }
+  
+  .space {
+    height: 100px;
+  }
+  
+  
+  .logo-nav{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 50px;
+    height: 40px;
+  }
+  
+  .mlh {
+    max-width: 10%;
+    max-height: 10%;
+    display: inline-block;
+  }
+  
+  .banner {
+    padding-top: 20vh;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg, rgba(10, 140, 200, 0.5), rgba(20, 30, 130, 0.5)), url('/images/cover.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    margin-top: -64px;
+    text-align: center;
+  
+  }
+  
+  .faq{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #fcfcfc;
+    background: -moz-linear-gradient(-45deg, #fcfcfc 0%, #e0e0e0 100%);
+    background: -webkit-linear-gradient(-45deg, #fcfcfc 0%,#e0e0e0 100%);
+    background: linear-gradient(135deg, #fcfcfc 0%,#e0e0e0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#e0e0e0',GradientType=1 );
+  
+  }
+  
+  .faq .faq-header {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 50px;
+  }
+  
+  .info {
+    color: white;
+    background: #42a5f5;
+    background: -moz-linear-gradient(-45deg, #42a5f5 0%, #5479a5 100%);
+    background: -webkit-linear-gradient(-45deg, #42a5f5 0%,#5479a5 100%);
+    background: linear-gradient(135deg, #42a5f5 0%,#5479a5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#42a5f5', endColorstr='#5479a5',GradientType=1 );
+  }
+  
+  .registration-container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #fcfcfc;
+    background: -moz-linear-gradient(-45deg, #fcfcfc 0%, #e0e0e0 100%);
+    background: -webkit-linear-gradient(-45deg, #fcfcfc 0%,#e0e0e0 100%);
+    background: linear-gradient(135deg, #fcfcfc 0%,#e0e0e0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#e0e0e0',GradientType=1 );
+  
+  }
+  
+  .spons-reg {
+    color: white;
+    background: #42a5f5;
+    background: -moz-linear-gradient(-45deg, #42a5f5 0%, #5479a5 100%);
+    background: -webkit-linear-gradient(-45deg, #42a5f5 0%,#5479a5 100%);
+    background: linear-gradient(135deg, #42a5f5 0%,#5479a5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#42a5f5', endColorstr='#5479a5',GradientType=1 );
+    padding-top: 30px;
+    padding-bottom: 30px;
+  
+  }
+  
+  footer {
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(45deg, rgba(10, 140, 200, 0.5), rgba(20, 30, 130, 0.5)), url('/images/cover.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    color: white;
+    font-size: 0.75em;
+  }
+  
+  @media (min-width: 750px){
+    .nav-wrapper {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+  
+  .schedule {
+    /*padding-top: 100px;*/
+    /*padding-bottom: 100px;*/
+  }
+  
+  
+  .sponsors {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+  }
+  
+  .s-image {
+    max-height: 70px;
+    margin-left: 30px;
+    max-width: 95%;
+  }
+  
+  @media (max-width: 1200px) {
+    .s-image {
+      margin-left: 2.5%;
+    }
+  }
+  
+  .s-image:hover {
+    opacity: .6;
+  
+  }
+  
+  
+  /* Phone */
+  schedule-container {
+    width: 100%;
+    /* TODO: set background color */
+  }
+  
+  .schedule {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 2rem;
+  }
+  
+  .schedule table {
+    border-collapse: collapse;
+  }
+  
+  .schedule div table td:first-child {
+    width: 100%;
+    padding-right: 2rem;
+  }
+  
+  .schedule div table td:last-child {
+    white-space: nowrap;
+    vertical-align: top;
+    padding-left: 3rem;
+    border-left: 1px solid #e0e0e0;
+  }
+  
+  .schedule:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .saturday, .sunday {
+    float: left;
+    width: 100%;
+  }
+  
+  .schedule .saturday h1, .schedule .sunday h1 {
+    text-align: center;
+    width: 100%;
+  }
+  
+  @media only screen and (min-width:993px) {
+    .saturday,.sunday {
+      width: 50%;
+      padding: 2.5%;
+    }
+  }
